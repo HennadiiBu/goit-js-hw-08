@@ -29,12 +29,15 @@ function onInputMessage() {
 }
 
 function onSub(event) {
-  event.preventDefault();
-  const localData = localStorage.getItem('feedback-form-state');
-  console.log(JSON.parse(localData));
-  email.value = '';
-  message.value = '';
-  localStorage.removeItem('feedback-form-state');
-  resultObj = {};
+  if (email.value === '' || message.value === '') {
+    alert('Заполните все поля');
+  } else {
+    event.preventDefault();
+    const localData = localStorage.getItem('feedback-form-state');
+    console.log(JSON.parse(localData));
+    email.value = '';
+    message.value = '';
+    localStorage.removeItem('feedback-form-state');
+    resultObj = {};
+  }
 }
-//ggf
