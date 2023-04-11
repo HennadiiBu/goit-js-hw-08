@@ -5,9 +5,8 @@ const player = new Vimeo.Player(iframe);
 
 player.on(
   'timeupdate',
-  throttle(data => {
-    const pauseTime = JSON.stringify(data.seconds);
-    localStorage.setItem('videoplayer-current-time', pauseTime);
+  throttle(({ seconds }) => {
+    localStorage.setItem('videoplayer-current-time', seconds);
   }, 1000)
 );
 
